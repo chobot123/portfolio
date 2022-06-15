@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.circle {
+    height: 70px;
+    width: 70px;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: relative;
+    font-family: 'Rubik', sans-serif;
+}
+
+#divider {
+    border: 0.25px solid white !important;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    transform: rotate(45deg);
+}
+
+#left {
+    position: absolute;
+    left: 30%;
+    top: 7%;
+}
+
+#right {
+    position: absolute;
+    right: 25%;
+    bottom: 5%;
+}
+
+
