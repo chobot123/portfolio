@@ -8,12 +8,12 @@ function Home(){
             <Row>
                 <Col>
                     <Container>
-                        
+                        <div id="name">Hey, I'm Joshua</div>
                     </Container>
                 </Col>
                 <Col>
                     <Container>
-
+                        
                     </Container>
                 </Col>
             </Row>
