@@ -19,48 +19,19 @@ function Home(){
 
 
     return(
-        <Container fluid className="home"
+        <Container fluid className="home d-flex flex-column justify-content-center align-items-center mb-1"
             style={
                 {
                     height: header,
                 }
             }
-        >
-            <Row className="h-100 align-items-center">
-                <Col>
-                    <Container>
-                        <div id="name">Hey, I'm Joshua</div>
-                        <div id="greeting">I'm a Full-Stack Web Developer</div>
-                    </Container>
-                </Col>
-                <Col className="h-100">
-                    <Container className="h-100">
-                        <div id="planet-container" className="h-100">
-                            <div className="orbit" id="exp">
-                                <div className="wrapper">
-                                    <div className="planet" id="exp">Experience</div>
-                                </div>
-                            </div>
-                            <div className="orbit" id="project">
-                                <div className="wrapper">
-                                    <div className="planet" id="project">Project</div>
-                                </div>
-                            </div>
-                            <div className="orbit" id="about">
-                                <div className="wrapper">
-                                    <div className="planet" id="about">about</div>
-                                </div>
-                            </div>
-                            <div className="orbit" id="contact">
-                                <div className="wrapper">
-                                    <div className="planet" id="contact">contact</div>
-                                </div>
-                            </div>
-                            <div className="sun">Sun</div>
-                        </div>
-                    </Container>
-                </Col>
-            </Row>
+        > 
+            <div className="message-container mb-4">
+                <div className="display-2" id="myName">Hi, I'm Josh.</div>
+                <div className="h1">I'm a full stack web developer.</div>
+                <button className="h2 view-work">Check Me Out &#8615;</button>
+            </div>
+            
         </Container>
     )
 }

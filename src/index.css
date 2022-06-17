@@ -1,5 +1,7 @@
 body, 
-html {
+html,
+#root,
+.App {
   height: 100%;
 }
 
