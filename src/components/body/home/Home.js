@@ -35,10 +35,14 @@ function Home(){
                 <div className="rolling-droid">
                     <div className="head">
                         <div className="neck"></div>
-                        <div className="head-marking"></div>
+                        <div className="head-marking one"></div>
+                        <div className="head-marking two"></div>
+                        <div className="head-marking three"></div>
                         <div className="antenna"></div>
                         <div className="antenna-two"></div>
-                        <div className="eyes"></div>
+                        <div className="eyes">
+                            <div className="pupil"></div>
+                        </div>
                         <div className="markings">
                             <div className="marking"></div>
                             <div className="marking"></div>
@@ -49,6 +53,22 @@ function Home(){
                         </div>
                     </div>
                     <div className="body">
+                        <div className="screws left">
+                            <div className="screw one"></div>
+                            <div className="screw two"></div>
+                        </div>
+                        <div className="screws top">
+                            <div className="screw one"></div>
+                            <div className="screw two"></div>
+                        </div>
+                        <div className="screws right">
+                            <div className="screw one"></div>
+                            <div className="screw two"></div>
+                        </div>
+                        <div className="screws bottom">
+                            <div className="screw one"></div>
+                            <div className="screw two"></div>
+                        </div>
                         <div className="core">
                             <div className="inner-core">
                                 <div className="bracket top"></div>
@@ -57,7 +77,30 @@ function Home(){
                                 <div className="bracket right"></div>
                                 <div className="battery"></div>
                             </div>
-                            <div className="left-core"></div>
+                        </div>
+                        <div className="connector left"></div>
+                        <div className="outer-core left">
+                            <div className="inner-circle left">
+                                <div className="bracket right"></div>
+                            </div>
+                        </div>
+                        <div className="connector top"></div>
+                        <div className="outer-core top">
+                            <div className="inner-circle top">
+                                <div className="bracket bottom"></div>
+                            </div>
+                        </div>
+                        <div className="connector right"></div>
+                        <div className="outer-core right">
+                            <div className="inner-circle right">
+                                <div className="bracket left"></div>
+                            </div>
+                        </div>
+                        <div className="connector bottom"></div>
+                        <div className="outer-core bottom">
+                            <div className="inner-circle bottom">
+                                <div className="bracket top"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
