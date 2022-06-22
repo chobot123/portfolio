@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "./Home.css";
+import RollingBot from "./rolling_bot/RollingBot";
+import "./hallway.css";
 
 function Home(){
 
-    const [header, setHeader] = useState(0);
+    const [homeHeight, setHomeHeight] = useState(0);
+    const [xCoordinate, setXCoordinate] = useState(0);
 
     function getHomeHeight(){
         const headerHeight = document.querySelector(".header").offsetHeight;
@@ -13,16 +16,18 @@ function Home(){
     }
 
     useEffect(()=>{
-        //on component mount
-        setHeader(getHomeHeight());
-    }, [header])
-
+        setHomeHeight(getHomeHeight());
+    }, [homeHeight])
 
     return(
-        <Container fluid className="home d-flex flex-column justify-content-center align-items-start"
+        <Container 
+            fluid className="home d-flex 
+                    flex-column justify-content-center 
+                    align-items-start"
+
             style={
                 {
-                    height: header,
+                    height: homeHeight,
                 }
             }
         > 
@@ -31,76 +36,27 @@ function Home(){
                 <div className="h1">I'm a full stack web developer.</div>
                 <button className="h2 view-work">Check Me Out &#8615;</button>
             </div>
-            <div className="bot">
-                <div className="rolling-droid">
-                    <div className="head">
-                        <div className="neck"></div>
-                        <div className="head-marking one"></div>
-                        <div className="head-marking two"></div>
-                        <div className="head-marking three"></div>
-                        <div className="antenna"></div>
-                        <div className="antenna-two"></div>
-                        <div className="eyes">
-                            <div className="pupil"></div>
+            <div className="hallway" style={{height: homeHeight}}>
+                <div className="top lights">
+                    <div className="lights container">
+                        <div className="left">
+                            <div className="lights"></div>
                         </div>
-                        <div className="markings">
-                            <div className="marking"></div>
-                            <div className="marking"></div>
-                            <div className="marking"></div>
-                        </div>
-                        <div className="camera">
-                            <div className="camera-button"></div>
+                        <div className="right">
+                            <div className="lights"></div>
                         </div>
                     </div>
-                    <div className="body">
-                        <div className="screws left">
-                            <div className="screw one"></div>
-                            <div className="screw two"></div>
+                </div>
+                <div className="left doors"></div>
+                <div className="middle endOfHall"></div>
+                <div className="right doors"></div>
+                <div className="bottom hall">
+                    <div className="hall container">    
+                        <div className="left">
+                            <div className="hall"></div>
                         </div>
-                        <div className="screws top">
-                            <div className="screw one"></div>
-                            <div className="screw two"></div>
-                        </div>
-                        <div className="screws right">
-                            <div className="screw one"></div>
-                            <div className="screw two"></div>
-                        </div>
-                        <div className="screws bottom">
-                            <div className="screw one"></div>
-                            <div className="screw two"></div>
-                        </div>
-                        <div className="core">
-                            <div className="inner-core">
-                                <div className="bracket top"></div>
-                                <div className="bracket left"></div>
-                                <div className="bracket bot"></div>
-                                <div className="bracket right"></div>
-                                <div className="battery"></div>
-                            </div>
-                        </div>
-                        <div className="connector left"></div>
-                        <div className="outer-core left">
-                            <div className="inner-circle left">
-                                <div className="bracket right"></div>
-                            </div>
-                        </div>
-                        <div className="connector top"></div>
-                        <div className="outer-core top">
-                            <div className="inner-circle top">
-                                <div className="bracket bottom"></div>
-                            </div>
-                        </div>
-                        <div className="connector right"></div>
-                        <div className="outer-core right">
-                            <div className="inner-circle right">
-                                <div className="bracket left"></div>
-                            </div>
-                        </div>
-                        <div className="connector bottom"></div>
-                        <div className="outer-core bottom">
-                            <div className="inner-circle bottom">
-                                <div className="bracket top"></div>
-                            </div>
+                        <div className="right">
+                            <div className="hall"></div>
                         </div>
                     </div>
                 </div>
