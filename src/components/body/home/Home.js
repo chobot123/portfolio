@@ -1,66 +1,100 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./Home.css";
-import RollingBot from "./rolling_bot/RollingBot";
-import "./hallway.css";
+import Description from "./description";
 
 function Home(){
 
     const [homeHeight, setHomeHeight] = useState(0);
-    const [xCoordinate, setXCoordinate] = useState(0);
 
-    function getHomeHeight(){
+    const getHomeHeight = () => {
         const headerHeight = document.querySelector(".header").offsetHeight;
         const bodyHeight = document.body.offsetHeight;
         return bodyHeight - headerHeight;
+    }
+
+    const setPosition = (bubbleElement) => {
+        const pos = Math.floor(Math.random() * (91 - 1) + 1);
+        bubbleElement.style.left= `${pos}%`;
+        bubbleElement.style.bottom = "-20%";
+    }
+
+    const createAnim = (bubbleElement) => {
+        const riseTimer = Math.floor(Math.random() * (15 - 7) + 7);
+        const swayTimer = Math.floor(Math.random() * (5 - 2) + 2);
+        const directionType = Math.floor(Math.random() * 2);
+        bubbleElement.style.webkitAnimation = `rise ${riseTimer}s linear infinite,
+                                sway ${swayTimer}s ease-in-out infinite ${(directionType === 0) ? "alternate" : "alternate-reverse"}`;
+    }
+
+    const updateAnim = (bubbleElement) => {
+        const riseTimer = Math.floor(Math.random() * (15 - 7) + 7);
+        const swayTimer = Math.floor(Math.random() * (5 - 2) + 2);
+        const directionType = Math.floor(Math.random() * 2);
+        bubbleElement.style.animationName = "rise, sway";
+        bubbleElement.style.animationDuration = `${riseTimer}s, ${swayTimer}s`;
+        bubbleElement.style.animationDirection = `normal, ${(directionType === 0) ? "alternate" : "alternate-reverse"}`;
+    }
+
+    const bubbleAnim = (bubble) => {
+        setPosition(bubble);
+        createAnim(bubble);
+        bubble.addEventListener("animationiteration", (animation) => {
+            if(animation.animationName === "rise"){
+                bubble.style.animationName = "none";
+                setPosition(bubble);
+                setTimeout(() => {updateAnim(bubble)}, 2000);
+            }
+
+        }, false)
     }
 
     useEffect(()=>{
         setHomeHeight(getHomeHeight());
     }, [homeHeight])
 
+    useEffect(() => {
+        const colChildren = document.getElementsByClassName("bubbles")[0].childNodes;
+
+        for(let i = 0; i < colChildren.length; i++){
+            bubbleAnim(colChildren[i]);
+        }
+    }, [])
+
     return(
         <Container 
             fluid className="home d-flex 
                     flex-column justify-content-center 
-                    align-items-start"
+                    align-items-center"
 
             style={
                 {
                     height: homeHeight,
                 }
             }
-        > 
-            <div className="message-container mb-5 pb-5">
-                <div className="display-2" id="myName">Hi, I'm Josh.</div>
-                <div className="h1">I'm a full stack web developer.</div>
-                <button className="h2 view-work">Check Me Out &#8615;</button>
-            </div>
-            <div className="hallway" style={{height: homeHeight}}>
-                <div className="top lights">
-                    <div className="lights container">
-                        <div className="left">
-                            <div className="lights"></div>
-                        </div>
-                        <div className="right">
-                            <div className="lights"></div>
-                        </div>
+        >
+            <Container className="message-container mb-5 pb-5">
+                <div className="introduction h5 pb-5 d-flex justify-content-center align-items-center flex-column">
+                    <div className="name-container">
+                        <h1 className="my-name display-1">Joshua Cho</h1>
+                        <h1 className="my-name display-1">Joshua Cho</h1>
                     </div>
+                    <Description />
                 </div>
-                <div className="left doors"></div>
-                <div className="middle endOfHall"></div>
-                <div className="right doors"></div>
-                <div className="bottom hall">
-                    <div className="hall container">    
-                        <div className="left">
-                            <div className="hall"></div>
-                        </div>
-                        <div className="right">
-                            <div className="hall"></div>
-                        </div>
+            </Container>
+            <Row className="bubble-container" style={{height: homeHeight}}>
+                <Col className="bubbles">
+                    <div className="bubble" id="bubble-one">
+                        <span className="air"></span>
                     </div>
-                </div>
-            </div>
+                    {/* <div className="bubble" id="bubble-two">
+                        <span className="air"></span>
+                    </div>
+                    <div className="bubble" id="bubble-three">
+                        <span className="air"></span>
+                    </div> */}
+                </Col>
+            </Row>
         </Container>
     )
 }
