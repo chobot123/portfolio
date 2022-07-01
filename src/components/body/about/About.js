@@ -23,7 +23,7 @@ function About(props) {
                         easy-to-use UIs to organized APIs, be at ease as we make something truly beautiful together.
                     </p>
                 </Col>
-                <Col>Tech Stack</Col>
+                <Col>Javascript, CSS, HTML, REACT, NODE, GIT, EXPRESS, MONGOOSE, MONGODB, WEBPACK, JEST, BOOTSTRAP</Col>
             </Row>
         </Container>
     )

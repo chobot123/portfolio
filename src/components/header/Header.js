@@ -26,13 +26,13 @@ function Header(){
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end font-size-lg">
                     <Nav>
                         <Nav.Item className="px-4">
-                            <Nav.Link className="h4">Experience</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item className="px-4">
-                            <Nav.Link className="h4">Projects</Nav.Link>
+                            <Nav.Link className="h4">Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item className="px-4">
                             <Nav.Link className="h4">About</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item className="px-4">
+                            <Nav.Link className="h4">Projects</Nav.Link>
                         </Nav.Item>
                         <Nav.Item className="px-4">
                             <Nav.Link className="h4">Contact</Nav.Link>
