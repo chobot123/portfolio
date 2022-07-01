@@ -1,57 +1,42 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Container } from "react-bootstrap";
 import "./Home.css";
 import Description from "./description";
 
-function Home(){
+function Home(props){
 
-    const [homeHeight, setHomeHeight] = useState(0);
+    const numOfBubbles = 4;
 
-    const getHomeHeight = () => {
-        const headerHeight = document.querySelector(".header").offsetHeight;
-        const bodyHeight = document.body.offsetHeight;
-        return bodyHeight - headerHeight;
-    }
-
-    const setPosition = (bubbleElement) => {
-        const pos = Math.floor(Math.random() * (91 - 1) + 1);
+    const setBubbleSizeAndPosition = (bubbleElement) => {
+        const pos = Math.floor(Math.random() * (101));
+        const size = Math.floor(Math.random() * (9 - 1) + 1);
+        
         bubbleElement.style.left= `${pos}%`;
         bubbleElement.style.bottom = "-20%";
+        bubbleElement.style.width = `${size}%`;
     }
 
     const createAnim = (bubbleElement) => {
         const riseTimer = Math.floor(Math.random() * (15 - 7) + 7);
         const swayTimer = Math.floor(Math.random() * (5 - 2) + 2);
         const directionType = Math.floor(Math.random() * 2);
+
         bubbleElement.style.webkitAnimation = `rise ${riseTimer}s linear infinite,
                                 sway ${swayTimer}s ease-in-out infinite ${(directionType === 0) ? "alternate" : "alternate-reverse"}`;
     }
 
-    const updateAnim = (bubbleElement) => {
-        const riseTimer = Math.floor(Math.random() * (15 - 7) + 7);
-        const swayTimer = Math.floor(Math.random() * (5 - 2) + 2);
-        const directionType = Math.floor(Math.random() * 2);
-        bubbleElement.style.animationName = "rise, sway";
-        bubbleElement.style.animationDuration = `${riseTimer}s, ${swayTimer}s`;
-        bubbleElement.style.animationDirection = `normal, ${(directionType === 0) ? "alternate" : "alternate-reverse"}`;
-    }
-
     const bubbleAnim = (bubble) => {
-        setPosition(bubble);
+        setBubbleSizeAndPosition(bubble);
         createAnim(bubble);
         bubble.addEventListener("animationiteration", (animation) => {
             if(animation.animationName === "rise"){
                 bubble.style.animationName = "none";
-                setPosition(bubble);
-                setTimeout(() => {updateAnim(bubble)}, 2000);
+                setBubbleSizeAndPosition(bubble);
+                setTimeout(() => {createAnim(bubble)}, 2000);
             }
 
         }, false)
     }
-
-    useEffect(()=>{
-        setHomeHeight(getHomeHeight());
-    }, [homeHeight])
 
     useEffect(() => {
         const colChildren = document.getElementsByClassName("bubbles")[0].childNodes;
@@ -69,7 +54,7 @@ function Home(){
 
             style={
                 {
-                    height: homeHeight,
+                    height: props.homeHeight,
                 }
             }
         >
@@ -82,19 +67,15 @@ function Home(){
                     <Description />
                 </div>
             </Container>
-            <Row className="bubble-container" style={{height: homeHeight}}>
-                <Col className="bubbles">
-                    <div className="bubble" id="bubble-one">
-                        <span className="air"></span>
-                    </div>
-                    {/* <div className="bubble" id="bubble-two">
-                        <span className="air"></span>
-                    </div>
-                    <div className="bubble" id="bubble-three">
-                        <span className="air"></span>
-                    </div> */}
-                </Col>
-            </Row>
+            <Container className="bubble-container" style={{height: props.homeHeight}}>
+                <div className="bubbles">
+                    {[...Array(numOfBubbles)].map((elem, index) => 
+                        <div className="bubble" id="bubble-two" key={index}>
+                            <span className="air"></span>
+                        </div>
+                    )}
+                </div>
+            </Container>           
         </Container>
     )
 }

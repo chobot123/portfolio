@@ -5,7 +5,7 @@ import './Header.css';
 function Header(){
     //EXPERIENCE, PROJECTS, ABOUT, CONTACT ME
     return (
-        <Navbar className="header" expand="lg" bg="dark" variant="dark">
+        <Navbar className="header fixed-top" expand="lg" bg="dark" variant="dark">
             <Container fluid>
                 <Navbar.Brand className="d-flex justify-content-center align-items-center pl-5">
                     <Container>

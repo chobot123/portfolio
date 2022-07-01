@@ -7,8 +7,8 @@ function Description(){
     return (
         <h2 className="description">
             <TypeWriterEffect
-                text={"Web Developer"}
-                textDelay={1000}
+                startDelay={100}
+                text="Web Developer"
                 typeSpeed={200}
                 cursorColor={"white"}
             />

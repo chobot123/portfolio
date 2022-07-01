@@ -1,0 +1,9 @@
+.about {
+    color: white !important;
+    height: 100%;
+}
+
+#helmet {
+    filter: invert(1);
+    width: 50%;
+}

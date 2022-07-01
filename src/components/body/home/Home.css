@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 .home {
     font-family: 'Staatliches', cursive;
-    background-color: black;
+
 	position: relative;
 	overflow: hidden;
 }
@@ -18,10 +18,7 @@
 .name-container {
     height: 4rem;
     width: 100%;
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    position: relative;
 }
 
 .name-container h1 {
@@ -83,6 +80,7 @@
     }
   }
 
+
 /*
   bubble
 */
@@ -94,12 +92,10 @@
 
 .bubble {
 	position: absolute;
-	height: 100px;
 	width: 100px;
 	border-radius: 50%;
 	border: 1px solid rgb(255, 255, 255);
-    opacity: 1;
-    z-index: 5;
+  opacity: 1;
 	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 	bottom: -20%;
 }
